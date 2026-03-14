@@ -1,0 +1,33 @@
+﻿
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage
+@{
+	Layout = null;
+}
+<!doctype html>
+	<html lang="en">
+		<head>
+
+			<meta charset="utf-8">
+			<meta name="viewport" content="width=device-width, initial-scale=1">
+            <title>@Model.Name</title>
+            <meta name="description" content="description" />
+			
+		</head>
+		<body class="d-flex flex-column min-vh-100">
+            <header class="border-bottom py-3 mb-4">
+                <div class="container">
+                    <h1 class="h4 m-0">@Model.Root()?.Name</h1>
+                </div>
+            </header>
+
+            <main class="flex-fill">
+                    @RenderBody()
+            </main>
+
+            <footer class="border-top py-3 mt-4">
+                <div class="container text-muted small">
+                    &copy; @DateTime.Now.Year
+                </div>
+            </footer>
+        </body>
+	</html>
