@@ -1,0 +1,15 @@
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+
+
+<header class="border-bottom py-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h4 m-0">@Model.Root()?.Name</h1>
+
+        <NavMenu />
+        <MobileNav />
+    </div>
+</header>
+
+@code {
+    [Parameter] public IPublishedContent Model { get; set; }
+}

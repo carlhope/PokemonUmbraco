@@ -11,23 +11,35 @@
 			<meta name="viewport" content="width=device-width, initial-scale=1">
             <title>@Model.Name</title>
             <meta name="description" content="description" />
-			
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+            <link href="~/styles.css" rel="stylesheet" />
 		</head>
 		<body class="d-flex flex-column min-vh-100">
-            <header class="border-bottom py-3 mb-4">
-                <div class="container">
-                    <h1 class="h4 m-0">@Model.Root()?.Name</h1>
-                </div>
-            </header>
+         <component type="typeof(PokemonUmbraco.Components.Layout.HeaderComponent)"
+           param-Model="Model"
+           render-mode="Static" />
 
             <main class="flex-fill">
                     @RenderBody()
             </main>
 
-            <footer class="border-top py-3 mt-4">
-                <div class="container text-muted small">
-                    &copy; @DateTime.Now.Year
-                </div>
-            </footer>
+             <component type="typeof(PokemonUmbraco.Components.Layout.FooterComponent)"
+           render-mode="Static" />
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const toggle = document.getElementById("mobileMenuToggle");
+            const closeBtn = document.getElementById("mobileMenuClose");
+            const panel = document.getElementById("mobileMenuPanel");
+
+            toggle?.addEventListener("click", () => {
+                panel.classList.toggle("open");
+            });
+
+            closeBtn?.addEventListener("click", () => {
+                panel.classList.remove("open");
+            });
+        });
+        </script>
         </body>
 	</html>

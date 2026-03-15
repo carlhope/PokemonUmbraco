@@ -1,10 +1,9 @@
-﻿
-
-@inherits UmbracoViewPage<Home>
+﻿@inherits UmbracoViewPage<Home>
 
 @{
-	Layout = "~/Views/layout.cshtml";
+    Layout = "~/Views/layout.cshtml";
 }
-<p>Home page</p>
-<p>Title: @Model.Name</p>
-<p>kladkf: @Model.IntroString</p>
+
+<component type="typeof(PokemonUmbraco.Components.Pages.HomePage)" 
+           param-Model="Model" 
+           render-mode="Static" />

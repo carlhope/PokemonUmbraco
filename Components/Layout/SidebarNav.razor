@@ -1,0 +1,12 @@
+﻿<aside class="d-none d-lg-block border-end p-4" style="width: 250px;">
+    <nav class="d-flex flex-column gap-3">
+        <a href="#" class="text-decoration-none">Home</a>
+        <a href="#" class="text-decoration-none">Pokémon</a>
+        <a href="#" class="text-decoration-none">Types</a>
+        <a href="#" class="text-decoration-none">Regions</a>
+    </nav>
+</aside>
+
+@code {
+    [Parameter] public IEnumerable<string>? Items { get; set; }
+}

@@ -1,0 +1,19 @@
+﻿<button class="btn d-md-none" id="mobileMenuToggle">
+    ☰ Menu
+</button>
+
+<div id="mobileMenuPanel" class="mobile-nav position-fixed top-0 start-0 w-75 h-100 bg-light shadow p-4">
+    <button class="btn btn-sm btn-outline-secondary mb-3" id="mobileMenuClose">Close</button>
+
+    <nav class="d-flex flex-column gap-3">
+        <a href="#" class="text-decoration-none">Home</a>
+        <a href="#" class="text-decoration-none">Pokémon</a>
+        <a href="#" class="text-decoration-none">Types</a>
+        <a href="#" class="text-decoration-none">Regions</a>
+    </nav>
+</div>
+
+@code {
+
+    [Parameter] public IEnumerable<string>? Items { get; set; }
+}

@@ -1,0 +1,11 @@
+﻿@using Umbraco.Cms.Web.Common.PublishedModels
+<h3>HomePage</h3>
+<h1>@Model.IntroString</h1>
+<p>@Model.Name</p>
+
+@code {
+        [Parameter]
+        public Home Model { get; set; }
+
+
+}
