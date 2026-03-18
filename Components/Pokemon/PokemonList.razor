@@ -1,0 +1,47 @@
+﻿@using PokemonUmbraco.Models.External
+@using PokemonUmbraco.Services
+@using PokemonUmbraco.Models
+@using PokemonUmbraco.Services.Interfaces
+@inject IPokeApiService PokeApi
+
+<div class="pokemon-list">
+    @if (isLoading)
+    {
+        <p>Loading Pokémon...</p>
+    }
+    else if (errorMessage is not null)
+    {
+        <p class="error">@errorMessage</p>
+    }
+    else if (pokemon is not null)
+    {
+        <div class="pokemon-grid">
+            @foreach (var p in pokemon)
+            {
+                <PokemonCard Pokemon="p" />
+            }
+        </div>
+    }
+</div>
+
+@code {
+    private bool isLoading = true;
+    private string? errorMessage;
+    private List<PokemonDto>? pokemon;
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            pokemon = await PokeApi.GetPokemonListAsync(20); // or whatever number you want
+        }
+        catch (Exception ex)
+        {
+            errorMessage = "Failed to load Pokémon.";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

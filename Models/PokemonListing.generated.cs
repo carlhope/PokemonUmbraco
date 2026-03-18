@@ -18,14 +18,14 @@ using Umbraco.Extensions;
 
 namespace Umbraco.Cms.Web.Common.PublishedModels
 {
-	/// <summary>home</summary>
-	[PublishedModel("home")]
-	public partial class Home : PublishedContentModel
+	/// <summary>Pokemon Listing</summary>
+	[PublishedModel("pokemonListing")]
+	public partial class PokemonListing : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
-		public new const string ModelTypeAlias = "home";
+		public new const string ModelTypeAlias = "pokemonListing";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
@@ -34,14 +34,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 			=> PublishedModelUtility.GetModelContentType(contentTypeCache, ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<Home, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(IPublishedContentTypeCache contentTypeCache, Expression<Func<PokemonListing, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(contentTypeCache), selector);
 #pragma warning restore 0109
 
 		private IPublishedValueFallback _publishedValueFallback;
 
 		// ctor
-		public Home(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
+		public PokemonListing(IPublishedContent content, IPublishedValueFallback publishedValueFallback)
 			: base(content, publishedValueFallback)
 		{
 			_publishedValueFallback = publishedValueFallback;
@@ -50,15 +50,22 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// introText: A brief text introducing the website
+		/// Intro text: page intro text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("introString")]
-		public virtual string IntroString => this.Value<string>(_publishedValueFallback, "introString");
+		[ImplementPropertyType("introText")]
+		public virtual string IntroText => this.Value<string>(_publishedValueFallback, "introText");
 
 		///<summary>
-		/// Page Title: Title of the page
+		/// number of pokemon: the maximum number of Pokemon viewable on the page
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
+		[ImplementPropertyType("numberOfPokemon")]
+		public virtual int NumberOfPokemon => this.Value<int>(_publishedValueFallback, "numberOfPokemon");
+
+		///<summary>
+		/// Page Title: Title of page
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.2.2+11a412c")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]

@@ -1,0 +1,23 @@
+﻿@using PokemonUmbraco.Models
+@using PokemonUmbraco.Models.External
+
+<div class="pokemon-card">
+    <h3>@Pokemon.Name</h3>
+
+    @if (!string.IsNullOrWhiteSpace(Pokemon.Sprites.FrontDefault))
+    {
+        <img src="@Pokemon.Sprites.FrontDefault" alt="@Pokemon.Name" />
+    }
+
+    <div class="types">
+        @foreach (var t in Pokemon.Types)
+        {
+            <TypeBadge TypeName="t" />
+        }
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public PokemonDto Pokemon { get; set; }
+}

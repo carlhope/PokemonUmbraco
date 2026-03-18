@@ -1,0 +1,12 @@
+﻿@using PokemonUmbraco.Components.Pokemon
+@using PokemonUmbraco.Models
+@using Umbraco.Cms.Web.Common.PublishedModels
+
+<h1 style="color:red">@Model.PageTitle</h1>
+
+<PokemonList />
+
+@code{
+	[Parameter]
+	public PokemonListing Model { get; set; }
+}
