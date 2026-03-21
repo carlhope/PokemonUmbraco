@@ -1,6 +1,31 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels;
+@using PokemonUmbraco.Components.Pages
+
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<PokemonDetails>
 @using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+
 @{
-	Layout = null;
+    Layout = "~/Views/layout.cshtml";
+
+    var path = Context.Request.Path.Value?.ToLowerInvariant();
+    var name = "pikachu"; // Default value if no name is provided in the URL
+
+    if (!string.IsNullOrWhiteSpace(path))
+    {
+        // Case: /pokemon/details/{pokemon}
+        if (path.StartsWith("/pokemon/details/"))
+        {
+            var parts = path.Split("/pokemon/details/");
+
+            // parts[1] must exist AND must not be empty
+            if (parts.Length == 2 && !string.IsNullOrWhiteSpace(parts[1]))
+            {
+                name = parts[1];
+            }
+        }
+    }
 }
+
+<component type="typeof(PokemonDetailsPage)"
+    param-Name="@(name)"
+    render-mode="static" />

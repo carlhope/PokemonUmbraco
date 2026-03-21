@@ -1,3 +1,4 @@
+using PokemonUmbraco;
 using PokemonUmbraco.Services;
 using PokemonUmbraco.Services.Interfaces;
 
@@ -11,6 +12,7 @@ builder.CreateUmbracoBuilder()
     .AddBackOffice()
     .AddWebsite()
     .AddComposers()
+    .AddContentFinder<PokemonDetailsContentFinder>()
     .Build();
 
 WebApplication app = builder.Build();

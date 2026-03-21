@@ -1,0 +1,38 @@
+﻿@using PokemonUmbraco.Models.External
+@using PokemonUmbraco.Services.Interfaces
+@inject IPokeApiService PokeApi
+
+@if (Pokemon == null)
+{
+    <p>Loading @Name...</p>
+}
+else
+{
+    <div>
+        <h2>@Pokemon.Name</h2>
+
+        @if (!string.IsNullOrWhiteSpace(Pokemon.Sprites.FrontDefault))
+        {
+            <img src="@Pokemon.Sprites.FrontDefault" alt="@Pokemon.Name" width="150" />
+        }
+
+        <h4>Types:</h4>
+        <ul>
+            @foreach (var t in Pokemon.Types)
+            {
+                <li>@t.Type.Name</li>
+            }
+        </ul>
+    </div>
+}
+
+@code {
+    [Parameter] public string Name { get; set; }
+
+    private PokemonDto Pokemon;
+
+    protected override async Task OnInitializedAsync()
+    {
+        Pokemon = await PokeApi.GetPokemonAsync(Name);
+    }
+}
