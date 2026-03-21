@@ -12,7 +12,7 @@
     <div class="types">
         @foreach (var t in Pokemon.Types)
         {
-            <TypeBadge TypeName="t" />
+            <TypeBadge TypeName=@t.Type.Name />
         }
     </div>
 </div>
