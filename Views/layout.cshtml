@@ -9,25 +9,28 @@
 
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1">
-            <title>@Model.Name</title>
+			<title>@Model.Name</title>
+			<!--Wherever you want to render your meta fields <meta-fields></meta-fields>-->
             <meta name="description" content="description" />
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 			@Html.RenderUmbracoFormDependencies(Url)
 			<link href="~/styles.css" rel="stylesheet" />
+			<render-script position="HeadBottom"></render-script>
 		</head>
-		<body class="d-flex flex-column min-vh-100">
-         <component type="typeof(PokemonUmbraco.Components.Layout.HeaderComponent)"
-           param-Model="Model"
-           render-mode="Static" />
+	<body class="d-flex flex-column min-vh-100">
+	<render-script position="BodyTop"></render-script>
+	<component type="typeof(PokemonUmbraco.Components.Layout.HeaderComponent)"
+	           param-Model="Model"
+	           render-mode="Static"/>
 
-            <main class="flex-fill">
-                    @RenderBody()
-            </main>
+	<main class="flex-fill">
+		@RenderBody()
+	</main>
 
-             <component type="typeof(PokemonUmbraco.Components.Layout.FooterComponent)"
-           render-mode="Static" />
-      <script>
+	<component type="typeof(PokemonUmbraco.Components.Layout.FooterComponent)"
+	           render-mode="Static"/>
+	<script>
         document.addEventListener("DOMContentLoaded", function () {
             const toggle = document.getElementById("mobileMenuToggle");
             const closeBtn = document.getElementById("mobileMenuClose");
@@ -42,5 +45,6 @@
             });
         });
         </script>
-        </body>
+	<render-script position="BodyBottom"></render-script>
+	</body>
 	</html>
