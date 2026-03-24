@@ -1,0 +1,6 @@
+﻿.my-custom-form-theme{
+    background-color: aliceblue;
+}
+.umbraco-forms-hidden {
+    display: none !important;
+}
