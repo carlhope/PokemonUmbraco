@@ -4,25 +4,28 @@
 @using PokemonUmbraco.Services.Interfaces
 @inject IPokeApiService PokeApi
 
-<div class="pokemon-list">
+<div class="container py-4 pokemon-list">
     @if (isLoading)
     {
         <p>Loading Pokémon...</p>
     }
     else if (errorMessage is not null)
     {
-        <p class="error">@errorMessage</p>
+        <p class="text-danger">@errorMessage</p>
     }
     else if (pokemon is not null)
     {
-        <div class="pokemon-grid">
+        <div class="row g-4">
             @foreach (var p in pokemon)
             {
-                <PokemonCard Pokemon="p" />
+                <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                    <PokemonCard Pokemon="p" />
+                </div>
             }
         </div>
     }
 </div>
+
 
 @code {
     private bool isLoading = true;

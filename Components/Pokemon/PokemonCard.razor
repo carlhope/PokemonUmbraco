@@ -1,21 +1,28 @@
 ﻿@using PokemonUmbraco.Models
 @using PokemonUmbraco.Models.External
-
-<div class="pokemon-card">
-    <h3>@Pokemon.Name</h3>
-
+<a href="./pokemon/details/@Pokemon.Name"
+   class="text-decoration-none text-reset">
+<div class="card text-center shadow-sm pokemon-card h-100">
     @if (!string.IsNullOrWhiteSpace(Pokemon.Sprites.FrontDefault))
     {
-        <img src="@Pokemon.Sprites.FrontDefault" alt="@Pokemon.Name" />
+        <img src="@Pokemon.Sprites.FrontDefault"
+             class="card-img-top p-3"
+             alt="@Pokemon.Name" />
     }
 
-    <div class="types">
-        @foreach (var t in Pokemon.Types)
-        {
-            <TypeBadge TypeName=@t.Type.Name />
-        }
+    <div class="card-body">
+        <p class="card-title text-capitalize h5">@Pokemon.Name</p>
+
+        <div class="d-flex justify-content-center gap-2 flex-wrap mt-2">
+            @foreach (var t in Pokemon.Types)
+            {
+                <TypeBadge TypeName="@t.Type.Name" />
+            }
+        </div>
     </div>
 </div>
+</a>
+
 
 @code {
     [Parameter]
