@@ -1,0 +1,65 @@
+﻿
+@page "/register"
+@using Microsoft.AspNetCore.Components.Forms
+@using System.ComponentModel.DataAnnotations
+@inject HttpClient Http
+
+
+<h2>Register</h2>
+
+@if (!string.IsNullOrWhiteSpace(Message))
+{
+    <div class="alert alert-info">@Message</div>
+}
+
+<EditForm Model="@Registration" OnSubmit="HandleSubmit" FormName="reggy">
+    <DataAnnotationsValidator />
+
+    <div class="mb-3">
+        <label>Email</label>
+        <InputText class="form-control" @bind-Value="Registration.Email" />
+    </div>
+
+    <div class="mb-3">
+        <label>Password</label>
+        <InputText class="form-control" @bind-Value="Registration.Password" type="password" />
+    </div>
+
+    <button class="btn btn-primary">Register</button>
+    <p>Email: @Registration.Email</p>
+    <p>Password: @Registration.Password</p>
+
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    public RegistrationModel Registration { get; set; } = new();
+    private string Message = string.Empty;
+
+    private async Task HandleSubmit()
+    {
+        var result = await Http.PostAsJsonAsync("https://localhost:44380/auth/register", Registration);
+
+        if (result.IsSuccessStatusCode)
+        {
+            Message = "Registration successful.";
+        }
+        else
+        {
+            Message = "Registration failed.";
+        }
+    }
+
+    public class RegistrationModel
+    {
+        [Required]
+        [EmailAddress]
+        public string Email { get; set; } = string.Empty;
+
+        [Required]
+        [MinLength(6)]
+        public string Password { get; set; } = string.Empty;
+    }
+
+}
+

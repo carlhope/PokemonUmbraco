@@ -7,6 +7,12 @@ builder.Services.AddHttpClient<IPokeApiService, PokeApiService>(client =>
 {
     client.BaseAddress = new Uri("https://pokeapi.co/api/v2/");
 });
+builder.Services.AddHttpClient();
+builder.Services.AddControllers();
+
+builder.Services.AddRazorComponents()
+    .AddInteractiveServerComponents();
+
 
 builder.CreateUmbracoBuilder()
     .AddBackOffice()
@@ -19,6 +25,8 @@ WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
 
+app.MapRazorComponents<App>()
+    .AddInteractiveServerRenderMode();
 
 app.UseUmbraco()
     .WithMiddleware(u =>
@@ -32,4 +40,11 @@ app.UseUmbraco()
         u.UseWebsiteEndpoints();
     });
 
+app.MapControllers();
+
+
+
+
 await app.RunAsync();
+
+
