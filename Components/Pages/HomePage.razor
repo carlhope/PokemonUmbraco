@@ -1,19 +1,23 @@
 ﻿@using Umbraco.Cms.Web.Common.PublishedModels
 
-<section class="home">
-    <h1>@Model.PageTitle</h1>
+<section class="home py-5 bg-light">
+    <div class="container text-center">
+        <h1 class="display-4 mb-3">@Model.PageTitle</h1>
 
-    @if (!string.IsNullOrWhiteSpace(Model.IntroString))
-    {
-        <p>@Model.IntroString</p>
-    }
+        @if (!string.IsNullOrWhiteSpace(Model.IntroString))
+        {
+            <p class="lead mb-4">@Model.IntroString</p>
+        }
 
-    <p>
-        <a class="btn btn-primary" href="/pokemon">Browse Pokémon</a>
-    </p>
+        <a class="btn btn-primary btn-lg text-warning fw-bold" href="/pokemon">
+            Browse Pokémon
+        </a>
+
+    </div>
 </section>
 
 @code {
     [Parameter]
     public Home Model { get; set; }
 }
+

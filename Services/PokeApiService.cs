@@ -1,4 +1,5 @@
 ﻿using PokemonUmbraco.Models.External;
+using PokemonUmbraco.Models.External;
 using PokemonUmbraco.Services.Interfaces;
 
 namespace PokemonUmbraco.Services

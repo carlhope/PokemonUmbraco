@@ -1,6 +1,8 @@
 ﻿@using PokemonUmbraco.Components.Pokemon
 
-<PokemonDetail Name="@Name" />
+<div class="container py-4">
+    <PokemonDetail Name="@Name" />
+</div>
 
 @code {
     [Parameter] public string Name { get; set; }
