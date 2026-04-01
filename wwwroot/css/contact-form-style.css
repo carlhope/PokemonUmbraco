@@ -1,0 +1,142 @@
+﻿/* Ensure hidden fields remain hidden*/
+.umbraco-forms-hidden {
+    display: none !important;
+}
+
+/* Theme wrapper */
+.my-contact-form-theme {
+    max-width: 800px;
+    margin: 2rem auto;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Desktop override */
+@media (min-width: 768px) {
+    .my-contact-form-theme {
+        margin-top: 0;
+    }
+}
+
+
+/* Space between fields */
+.my-contact-form-theme .umbraco-forms-field-wrapper {
+    margin-bottom: 1.25rem;
+}
+
+/* Labels */
+.my-contact-form-theme label {
+    font-weight: 600;
+    margin-bottom: .5rem;
+    display: block;
+}
+
+/* Inputs, selects, textareas */
+.my-contact-form-theme input[type="text"],
+.my-contact-form-theme input[type="email"],
+.my-contact-form-theme input[type="tel"],
+.my-contact-form-theme textarea,
+.my-contact-form-theme select {
+    width: 100%;
+    padding: .75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1rem;
+}
+
+/* Navigation container spacing */
+.my-contact-form-theme .umbraco-forms-navigation {
+    margin-top: 1.5rem;
+}
+
+/* Keep wrapper block-level so validation sits underneath */
+.my-contact-form-theme .umbraco-forms-field-wrapper {
+    display: block;
+}
+
+/* Checkbox + label on the same line */
+.my-contact-form-theme .umbraco-forms-field-wrapper input[type="checkbox"] {
+    vertical-align: middle;
+    margin: 0 .5rem 0 0;
+}
+
+/* Hide the hidden input that follows the checkbox */
+.my-contact-form-theme .umbraco-forms-field-wrapper input[type="checkbox"] + input[type="hidden"] {
+    display: none;
+}
+
+/* Label inline with checkbox */
+.my-contact-form-theme .umbraco-forms-field-wrapper input[type="checkbox"] + input[type="hidden"] + label {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0;
+}
+
+/* Validation message always on its own line */
+.my-contact-form-theme .umbraco-forms-field-wrapper .field-validation-valid,
+.my-contact-form-theme .umbraco-forms-field-wrapper .field-validation-error {
+    display: block;
+    margin-top: .25rem;
+}
+/* Base button styling */
+.my-contact-form-theme .btn {
+    display: inline-block;
+    padding: .5rem 1rem;
+    border-radius: .25rem;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    line-height: 1.5;
+    text-align: center;
+}
+
+/* Primary (submit) */
+.my-contact-form-theme .btn.primary {
+    background-color: #0d6efd;
+    color: #fff;
+}
+
+.my-contact-form-theme .btn.primary:hover {
+    background-color: #0b5ed7;
+}
+
+/* Next button */
+.my-contact-form-theme .btn.next {
+    background-color: #6c757d; /* Bootstrap secondary */
+    color: #fff;
+}
+
+.my-contact-form-theme .btn.next:hover {
+    background-color: #5c636a;
+}
+
+/* Previous button */
+.my-contact-form-theme .btn.prev {
+    background-color: #adb5bd; /* Light grey */
+    color: #000;
+}
+
+.my-contact-form-theme .btn.prev:hover {
+    background-color: #9ca3a9;
+}
+
+/* Cancel button */
+.my-contact-form-theme .btn.cancel {
+    background-color: #dc3545; /* Bootstrap danger */
+    color: #fff;
+}
+
+.my-contact-form-theme .btn.cancel:hover {
+    background-color: #bb2d3b;
+}
+
+
+
+
+
+
+
+

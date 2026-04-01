@@ -7,59 +7,85 @@
 	var details = block != null ? (ContactDetails)block.Content : null;
 
 }
-<section class="contact-page">
+<section class="contact-page container">
 
-	<h1>@Model.Name</h1>
+	<h1 class="text-center">@Model.Name</h1>
 
-	@* Contact Details *@
-	@if (details != null)
-	{
-		<div class="contact-details">
+	<div class="row g-4">
 
-			@if (!string.IsNullOrWhiteSpace(details.Company))
-			{
-				<p class="company">@details.Company</p>
-			}
+		@* Contact Details *@
+		@if (details != null)
+		{
+			<div class="col-12 col-md-4">
+				<div class="contact-details">
 
-			<p>@details.AddressLine1</p>
+					@if (!string.IsNullOrWhiteSpace(details.Company))
+					{
+						<p class="company">@details.Company</p>
+					}
 
-			@if (!string.IsNullOrWhiteSpace(details.AddressLine2))
-			{
-				<p>@details.AddressLine2</p>
-			}
+					<p>@details.AddressLine1</p>
 
-			@if (!string.IsNullOrWhiteSpace(details.AddressLine3))
-			{
-				<p>@details.AddressLine3</p>
-			}
+					@if (!string.IsNullOrWhiteSpace(details.AddressLine2))
+					{
+						<p>@details.AddressLine2</p>
+					}
 
-			<p>@details.City</p>
+					@if (!string.IsNullOrWhiteSpace(details.AddressLine3))
+					{
+						<p>@details.AddressLine3</p>
+					}
 
-			@if (!string.IsNullOrWhiteSpace(details.County))
-			{
-				<p>@details.County</p>
-			}
+					<p>@details.City</p>
 
-			<p><strong>Phone:</strong> @details.PhoneNumber</p>
+					@if (!string.IsNullOrWhiteSpace(details.County))
+					{
+						<p>@details.County</p>
+					}
 
-			<p>
-				<strong>Email:</strong>
-				<a href="mailto:@details.Email">@details.Email</a>
-			</p>
+					<p><strong>Phone:</strong> @details.PhoneNumber</p>
 
-		</div>
-	}
+					<p>
+						<strong>Email:</strong>
+						<a href="mailto:@details.Email">@details.Email</a>
+					</p>
 
-	@* Contact Form *@
-	@if (Model.ContactForm.HasValue)
-	{
-		<div class="contact-form">
-			@await Component.InvokeAsync("RenderForm", new { formId = Model.ContactForm, 
-				theme = "basic", 
-				includeScripts = true })
+				</div>
+			</div>
+		}
 
-		</div>
-		<umb-forms-render-scripts theme="basic" />
-	}
+		@* Contact Form *@
+		@if (Model.ContactForm.HasValue)
+		{
+			<div class="col-12 col-md-8">
+				<div class="contact-form">
+					@await Component.InvokeAsync("RenderForm", new { 
+						formId = Model.ContactForm,
+						theme = "contact",
+						includeScripts = true 
+					})
+
+					<umb-forms-render-scripts theme="contact" />
+				</div>
+			</div>
+		}
+
+	</div>
 
 </section>
+
+<style>
+	.contact-details {
+		max-width: 400px;
+		margin: 0 auto;
+		background: #f9f9f9;
+		border: 1px solid #ddd;
+		border-radius: 8px;
+		padding: 2rem;
+		box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+	}
+
+
+
+</style>
+

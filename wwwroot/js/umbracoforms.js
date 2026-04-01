@@ -1,3 +1,3 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
-    alert("Custom Umbraco Forms JS loaded!");
+    //alert("Custom Umbraco Forms JS loaded!");
 });
