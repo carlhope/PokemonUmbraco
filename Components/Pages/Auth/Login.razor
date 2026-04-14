@@ -1,0 +1,45 @@
+﻿@page "/app/login"
+@using Microsoft.AspNetCore.Components.Forms
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Identity.Data
+@using Microsoft.JSInterop
+@using PokemonUmbraco.Models.Auth
+@using PokemonUmbraco.Services.Interfaces
+@using System.ComponentModel.DataAnnotations
+@inject IAuthService Auth
+@inject NavigationManager Nav
+@inject IJSRuntime JS
+
+
+<EditForm Model="@model" OnValidSubmit="HandleLogin" FormName="login">
+    <InputText @bind-Value="model.Email" />
+    <InputText @bind-Value="model.Password" type="password" />
+    <button>Login</button>
+</EditForm>
+
+@code {
+    [SupplyParameterFromForm]
+    private LoginModel model { get; set; } = new();
+    private bool _loginSucceeded;
+    private bool _loginAttempted;
+
+
+    private async Task HandleLogin()
+    {
+        var ok = await Auth.LoginAsync(new LoginRequest
+        {
+            Email = model.Email,
+            Password = model.Password
+        });
+
+        _loginSucceeded = ok;
+        _loginAttempted = true;
+
+        StateHasChanged();
+    }
+}
+
+
+
+
+

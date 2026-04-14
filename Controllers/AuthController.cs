@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity.Data;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Umbraco.Cms.Core.Models;
 using Umbraco.Cms.Core.Models.ContentEditing;
 using Umbraco.Cms.Core.Security;
 using Umbraco.Cms.Core.Services;
 using Umbraco.Cms.Web.Common.Controllers;
 using Umbraco.Cms.Web.Common.Security;
-using Microsoft.Extensions.Logging;
 
 
 namespace PokemonUmbraco.Controllers
@@ -64,6 +65,33 @@ namespace PokemonUmbraco.Controllers
                 return Ok();
             }
         }
+
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginRequest request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
+            var loginAttempt = await _signInManager.PasswordSignInAsync(
+                request.Email,
+                request.Password,
+                isPersistent: false,
+                lockoutOnFailure: false
+            );
+
+            if (!loginAttempt.Succeeded)
+                return Unauthorized(new { message = "Invalid username or password" });
+
+            return Ok(new { message = "Login successful" });
+        }
+        [HttpPost("logout")]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return Ok(new { message = "Logged out" });
+        }
+
+
 
         public class RegisterDto
         {

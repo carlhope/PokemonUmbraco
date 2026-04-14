@@ -1,0 +1,13 @@
+﻿@using Umbraco.Cms.Core.Models.PublishedContent
+@model IPublishedContent
+
+<header class="border-bottom py-3 mb-4">
+    <div class="container d-flex justify-content-between align-items-center">
+        <h1 class="h4 m-0">@Model.Root()?.Name</h1>
+
+        <NavMenu />
+        <MobileNav />
+        @await Html.PartialAsync("Partials/Auth/AuthButtons")
+    </div>
+</header>
+

@@ -1,0 +1,19 @@
+﻿@page "/app/{*path}"
+@namespace PokemonUmbraco.Pages
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Blazor Host</title>
+</head>
+<body>
+    <component type="typeof(PokemonUmbraco.App)" render-mode="Server" prerender="false" />
+    <script src="_framework/blazor.server.js"></script>
+</body>
+</html>
+

@@ -9,9 +9,11 @@ builder.Services.AddHttpClient<IPokeApiService, PokeApiService>(client =>
 });
 builder.Services.AddHttpClient();
 builder.Services.AddControllers();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents();
+.AddInteractiveServerComponents();
+builder.Services.AddRazorPages();
 
 
 builder.CreateUmbracoBuilder()
@@ -24,6 +26,7 @@ builder.CreateUmbracoBuilder()
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
+app.MapFallbackToPage("/app/{*path}", "/_Host");
 
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
@@ -41,6 +44,8 @@ app.UseUmbraco()
     });
 
 app.MapControllers();
+
+
 
 
 

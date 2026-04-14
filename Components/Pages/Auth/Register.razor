@@ -1,8 +1,11 @@
 ﻿
-@page "/register"
+@page "/app/register"
 @using Microsoft.AspNetCore.Components.Forms
 @using System.ComponentModel.DataAnnotations
-@inject HttpClient Http
+@using PokemonUmbraco.Models.Auth
+@using PokemonUmbraco.Services.Interfaces
+@inject IAuthService Auth
+
 
 
 <h2>Register</h2>
@@ -38,27 +41,7 @@
 
     private async Task HandleSubmit()
     {
-        var result = await Http.PostAsJsonAsync("https://localhost:44380/auth/register", Registration);
-
-        if (result.IsSuccessStatusCode)
-        {
-            Message = "Registration successful.";
-        }
-        else
-        {
-            Message = "Registration failed.";
-        }
-    }
-
-    public class RegistrationModel
-    {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; } = string.Empty;
-
-        [Required]
-        [MinLength(6)]
-        public string Password { get; set; } = string.Empty;
+     Auth.RegisterAsync(Registration);
     }
 
 }

@@ -1,5 +1,4 @@
 ﻿using PokemonUmbraco.Models.External;
-using PokemonUmbraco.Models.External;
 using PokemonUmbraco.Services.Interfaces;
 
 namespace PokemonUmbraco.Services
@@ -35,7 +34,7 @@ namespace PokemonUmbraco.Services
             if (list?.Results == null || list.Results.Count == 0)
                 return new List<PokemonDto>();
 
-            // 2. Fetch each Pokémon using your safe method
+            // 2. Fetch each Pokémon
             var tasks = list.Results
                 .Select(item => GetPokemonAsync(item.Name))
                 .ToList();
